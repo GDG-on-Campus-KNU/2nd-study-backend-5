@@ -25,7 +25,7 @@ public class Member {
 
     private String token;
 
-    public void register(String userId, String password, String name) {
+    public void signup(String userId, String password, String name) {
         this.userId = userId;
         this.password = password;
         this.name = name;

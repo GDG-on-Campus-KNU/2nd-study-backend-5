@@ -18,7 +18,7 @@ public class MemberServiceTest {
     @Test
     public void signUp() {
         Member member = new Member();
-        member.register("taegon1998", "1234", "taegon");
+        member.signup("taegon1998", "1234", "taegon");
 
         Long memberId = memberService.join(member);
 

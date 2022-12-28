@@ -18,4 +18,12 @@ public class MemberService {
 
         return member.getId();
     }
+
+    public Member authenticated(String userId, String password) {
+        Member member = memberRepository.findByUserId(userId);
+        if (member.getPassword().equals(password)) {
+            return member;
+        }
+        return null;
+    }
 }
