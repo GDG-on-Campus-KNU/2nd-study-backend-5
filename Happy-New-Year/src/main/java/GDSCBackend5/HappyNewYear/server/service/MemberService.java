@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class MemberService {
@@ -14,9 +16,17 @@ public class MemberService {
 
     @Transactional
     public Long join(Member member) {
+        validateDuplicateUserId(member);
         memberRepository.save(member);
 
         return member.getId();
+    }
+
+    private void validateDuplicateUserId(Member member) {
+        List<Member> members = memberRepository.findByUserId(member.getUserId());
+        if (!(members.isEmpty())) {
+            throw new IllegalStateException("동일한 아이디가 이미 존재합니다.");
+        }
     }
 
     public Member authentication(Member member, String password) {

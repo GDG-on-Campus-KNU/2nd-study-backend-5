@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static com.jayway.jsonpath.internal.path.PathCompiler.fail;
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class MemberServiceTest {
@@ -23,6 +25,20 @@ public class MemberServiceTest {
         Long memberId = memberService.join(member);
 
         Assertions.assertThat(member.getId()).isEqualTo(memberId);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void 아이디중복검사() {
+        Member member1 = new Member();
+        Member member2 = new Member();
+
+        member1.signup("taegon1999", "1234", "taegon1");
+        member2.signup("taegon1999", "12345", "taegon2");
+
+        memberService.join(member1);
+        memberService.join(member2);
+
+        fail("예외 발생 필요");
     }
 
     @Test
