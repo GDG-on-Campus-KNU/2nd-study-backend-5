@@ -1,10 +1,19 @@
 package GDSCBackend5.HappyNewYear.server.repository;
 
 import GDSCBackend5.HappyNewYear.server.domain.Member;
-import org.springframework.data.jpa.repository.JpaRepository;
+import jakarta.persistence.EntityManager;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface MemberRepository extends JpaRepository<Member, Long> {
-    Member findByUserId(String userId);
+@RequiredArgsConstructor
+public class MemberRepository {
+
+    private final EntityManager em;
+
+    public void save(Member member) {
+        em.persist(member);
+    }
 }
