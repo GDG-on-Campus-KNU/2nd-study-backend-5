@@ -1,20 +1,16 @@
 package GDSCBackend5.HappyNewYear.server.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Data
 public class Post {
 
     @Id
-    @GeneratedValue
-    @Column(name = "POST_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postid;
 
     private String sender;
@@ -27,5 +23,11 @@ public class Post {
 
     private Date regdate;
 
-
+    public void posting(String sender, String title, String content) {
+        this.regdate = new Date();
+        this.token = UUID.randomUUID().toString();
+        this.sender = sender;
+        this.title = title;
+        this.content = content;
+    }
 }
