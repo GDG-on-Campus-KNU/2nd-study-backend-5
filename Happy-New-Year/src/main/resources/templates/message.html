@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      font-family: 'Nanum Myeongjo', serif;
+    }
+  </style>
+</head>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    var message = [[${message}]];
+    alert(message);
+
+    location.replace([[${searchUrl}]])
+
+    /*]]>*/
+</script>
+<body>
+
+
+</body>
+</html>
