@@ -25,13 +25,19 @@ class PostServiceTest {
 
     @Test
     public void 글작성(){
+        Member member=new Member();
+        member.signup("kdozlo", "1234", "kim");
+
+        memberService.join(member);
+
         Post post = new Post();
 
-        post.posting("hi", "bye", "test");
+        post.posting("kdzolo", "this is", "test", member.getToken());
 
         Long postId = postService.write(post);
 
         Assertions.assertThat(post.getPostid()).isEqualTo(postId);
+        System.out.printf("%s %s %s\n", post.getSender(), post.getTitle(), post.getContent());
     }
 
     @Test
