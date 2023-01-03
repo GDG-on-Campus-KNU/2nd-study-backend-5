@@ -30,12 +30,4 @@ public class Post {
         this.title = title;
         this.content = content;
     }
-
-    public void posting(String sender, String title, String content,String token) {
-        this.regdate = new Date();
-        this.token = token;
-        this.sender = sender;
-        this.title = title;
-        this.content = content;
-    }
 }
