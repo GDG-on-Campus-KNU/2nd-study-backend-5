@@ -23,9 +23,9 @@ public class Post {
 
     private Date regdate;
 
-    public void posting(String sender, String title, String content) {
+    public void posting(String sender, String title, String content,String token) {
         this.regdate = new Date();
-        this.token = UUID.randomUUID().toString();
+        this.token = token;
         this.sender = sender;
         this.title = title;
         this.content = content;
