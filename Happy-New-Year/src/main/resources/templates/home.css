@@ -1,0 +1,33 @@
+h1 {
+    background-color: #DEB887;
+    max-width: 500px;
+    margin: auto;
+    text-align:center;
+}
+
+div {
+    font-size: 30px;
+    text-align: center;
+}
+
+#contents {
+    background-color: #DEB887;
+    max-width: 500px;
+    height: 100vh;
+    margin: auto;
+}
+
+#pocketimg {
+    max-width: 500px;
+    height=auto;
+    margin: auto;
+}
+
+#login {
+    margin-bottom:30px;
+}
+
+#signup {
+    margin-bottom:30px;
+}
+
