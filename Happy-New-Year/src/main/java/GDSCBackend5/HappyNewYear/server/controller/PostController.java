@@ -19,6 +19,7 @@ public class PostController {
 
     @PostMapping("/postwrite")
     public String postWrite(Post post) {
+        post.posting(post.getSender(), post.getTitle(), post.getContent(), "u");
         postService.write(post);
 
         return "writingHome";
