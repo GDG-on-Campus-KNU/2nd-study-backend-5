@@ -12,13 +12,21 @@
 <div id="contents">
   <img id="pocketimg" src="/image/Lovepik_com-401588692-lucky-bag.png">
   <br>
-  <!--<button id="postWriteBtn" onclick="location.href='/postwrite';">세뱃돈 보내기</button>-->
-  <button id="show">팝업열기</button>
+  <button id="show">세뱃돈 보내기</button>
 
   <div class="background">
     <div class="window">
       <div class="popup">
-        <button id="close">팝업닫기</button>
+        <div class="layout">
+          <form action="/postwrite" method="post">
+            제목 : <input name="title" type="text"><br>
+            작성자 : <input name="sender" type="text"><br>
+            내용 : <textarea name="content"></textarea><br>
+            <button>작성</button>
+          </form>
+          <button id="close">취소</button>
+        </div>
+
       </div>
     </div>
   </div>

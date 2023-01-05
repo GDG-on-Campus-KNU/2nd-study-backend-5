@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class WritingPost {
+public class PostController {
     @Autowired
     private PostService postService;
 
@@ -17,16 +17,10 @@ public class WritingPost {
         return "writingHome";
     }
 
-    @GetMapping("/postwrite")
-    public String postwriteForm() {
-
-        return "postwrite";
-    }
-
-    @PostMapping("/post/writepro")
-    public String postWritePro(Post post) {
+    @PostMapping("/postwrite")
+    public String postWrite(Post post) {
         postService.write(post);
 
-        return "";
+        return "writingHome";
     }
 }
