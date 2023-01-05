@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HappyNewYear</title>
+  <link rel="stylesheet" type="text/css" href="/css/writinghome.css">
+</head>
+<body>
+<h1>HappyNewYear</h1>
+<div id="contents">
+  <img id="pocketimg" src="/image/Lovepik_com-401588692-lucky-bag.png">
+  <br>
+  <!--<button id="postWriteBtn" onclick="location.href='/postwrite';">세뱃돈 보내기</button>-->
+  <button id="show">팝업열기</button>
+
+  <div class="background">
+    <div class="window">
+      <div class="popup">
+        <button id="close">팝업닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function show () {
+      document.querySelector(".background").className = "background show";
+    }
+
+    function close () {
+      document.querySelector(".background").className = "background";
+    }
+
+    document.querySelector("#show").addEventListener('click', show);
+    document.querySelector("#close").addEventListener('click', close);
+  </script>
+</div>
+</body>
+</html>

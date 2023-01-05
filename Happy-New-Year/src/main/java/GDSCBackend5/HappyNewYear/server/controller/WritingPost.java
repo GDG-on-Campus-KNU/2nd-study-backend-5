@@ -12,7 +12,12 @@ public class WritingPost {
     @Autowired
     private PostService postService;
 
-    @GetMapping("/post/write")
+    @GetMapping("/writinghome")
+    public String writingHome() {
+        return "writingHome";
+    }
+
+    @GetMapping("/postwrite")
     public String postwriteForm() {
 
         return "postwrite";
