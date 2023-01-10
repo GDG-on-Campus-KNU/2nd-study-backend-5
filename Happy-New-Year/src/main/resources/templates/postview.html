@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HappyNewYear</title>
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/css/modal.css">
+</head>
+<body>
+<h1>HappyNewYear</h1>
+<div id="contents">
+    <img id="pocketimg" src="/image/Lovepik_com-401588692-lucky-bag.png">
+</div>
+<div class="modal">
+    <div class="modal_body">Modal</div>
+</div>
+<button class="btn-open-popup">Modal 띄우기</button>
+<script>
+    const modal = document.querySelector('.modal');
+    const btnOpenPopup = document.querySelector('.btn-open-popup');
+
+    btnOpenPopup.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+</script>
+</body>
+</html>
