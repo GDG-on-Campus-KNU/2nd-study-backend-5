@@ -11,11 +11,19 @@
 <h1>HappyNewYear</h1>
 <div id="contents">
     <img id="pocketimg" src="/image/Lovepik_com-401588692-lucky-bag.png">
+    <div class="modal">
+        <div class="modal_body">
+            <p>복주머니 내용</p>
+            <tr th:each="post : ${postList}">
+                <p th:text="'보낸이: '+${post.sender}"></p>
+                <p th:text="'내용: '+${post.content}"></p>
+            </tr>
+
+        </div>
+    </div>
+    <button class="btn-open-popup">복주머니 보기</button>
 </div>
-<div class="modal">
-    <div class="modal_body">Modal</div>
-</div>
-<button class="btn-open-popup">Modal 띄우기</button>
+
 <script>
     const modal = document.querySelector('.modal');
     const btnOpenPopup = document.querySelector('.btn-open-popup');
