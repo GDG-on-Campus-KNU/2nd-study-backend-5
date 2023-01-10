@@ -24,26 +24,26 @@ public class PostController {
     private MemberService memberService;
     @GetMapping("/view")
     public String viewPost(Model model) {
-        Member member=new Member();
-        member.signup("Dawoon98", "1234", "Dawoon");
+//        Member member=new Member();
+//        member.signup("Dawoon98", "1234", "Dawoon");
+//
+//        memberService.join(member);
+//
+//        String userToken= member.getToken();
+//
+//        Post post1 =new Post();
+//        Post post2 =new Post();
+//        Post post3 =new Post();
+//
+//        post1.posting("hi", "bye", "test",userToken);
+//        post2.posting("Dawn", "bye", "test",userToken);
+//        post3.posting("DaeYoung", "bye", "test",userToken);
+//
+//        postService.write(post1);
+//        postService.write(post2);
+//        postService.write(post3);
 
-        memberService.join(member);
-
-        String userToken= member.getToken();
-
-        Post post1 =new Post();
-        Post post2 =new Post();
-        Post post3 =new Post();
-
-        post1.posting("hi", "bye", "test",userToken);
-        post2.posting("Dawn", "bye", "test",userToken);
-        post3.posting("DaeYoung", "bye", "test",userToken);
-
-        postService.write(post1);
-        postService.write(post2);
-        postService.write(post3);
-
-        model.addAttribute("member", postService.viewPostList(userToken));
+        model.addAttribute("postList", postService.viewPostList("0320f5b0-d812-4b01-81a5-3dc94c8ef7df"));
         return "postview";
     }
 
