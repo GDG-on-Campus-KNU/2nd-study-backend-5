@@ -22,10 +22,4 @@ public class MemberRepository {
                 .setParameter("userId", userId)
                 .getResultList();
     }
-
-    public List<Member> findByToken(String token) {
-        return em.createQuery("select m from Member As m where m.token = :token", Member.class)
-                .setParameter("token", token)
-                .getResultList();
-    }
 }

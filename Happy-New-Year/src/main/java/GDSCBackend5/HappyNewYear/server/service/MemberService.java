@@ -27,11 +27,6 @@ public class MemberService {
         return member.get(0);
     }
 
-    public Member findUserByToken(String token) {
-        List<Member> member = memberRepository.findByToken(token);
-        return member.get(0);
-    }
-
     private void validateDuplicateUserId(Member member) {
         List<Member> members = memberRepository.findByUserId(member.getUserId());
         if (!(members.isEmpty())) {
@@ -39,9 +34,15 @@ public class MemberService {
         }
     }
 
-    public Member authentication(Member member, String password) {
-        if (member.getPassword().equals(password)) {
-            return member;
+    public Member authentication(String userId, String password) {
+        List<Member> member = memberRepository.findByUserId(userId);
+
+        if (member.isEmpty()) {
+            return null;
+        }
+
+        if (member.get(0).getPassword().equals(password)) {
+            return member.get(0);
         } else return null;
     }
 }

@@ -5,8 +5,8 @@
 </head>
 <body>
     <form action="" th:action th:object="${member}" method="post">
-        <input type="text" placeholder="아이디" th:field="*{userId}" name="userId" required>
-        <input type="password" placeholder="비밀번호" th:field="*{password}" name="password" required>
+        <input type="text" placeholder="아이디" th:field="${member.userId}" name="userId" required>
+        <input type="password" placeholder="비밀번호" th:field="${member.password}" name="password" required>
         <div>* 계정이 없는 경우에는
             <a class="footer-a" th:href="@{/member/signup}">회원가입</a>을 해주세요.
         </div>

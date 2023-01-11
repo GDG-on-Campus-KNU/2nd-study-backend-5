@@ -49,12 +49,10 @@ public class MemberController {
     public String login(@Validated @ModelAttribute MemberLoginRequest loginRequest,
                         BindingResult bindingResult, HttpServletRequest request, Model model) {
 
-        String userId = loginRequest.getUserId();
-        Member findMember = memberService.findUser(userId);
-        Member loginMember = memberService.authentication(findMember, loginRequest.getPassword());
+        Member loginMember = memberService.authentication(loginRequest.getUserId(), loginRequest.getPassword());
 
         if (loginMember == null) {
-            bindingResult.reject("loginFail", "아이디 비밀번호 불일치");
+            model.addAttribute("member",loginRequest);
             return "signup/loginForm";
         }
         HttpSession session = request.getSession();

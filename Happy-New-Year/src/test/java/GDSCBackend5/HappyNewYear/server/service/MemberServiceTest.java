@@ -52,7 +52,7 @@ public class MemberServiceTest {
         memberService.join(member1);
         memberService.join(member2);
 
-        Member auth = memberService.authentication(member1, member1.getPassword());
+        Member auth = memberService.authentication(member1.getUserId(), member1.getPassword());
 
         Assertions.assertThat(auth).isEqualTo(member1);
     }
