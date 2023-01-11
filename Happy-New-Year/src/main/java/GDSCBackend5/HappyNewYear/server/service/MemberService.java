@@ -1,6 +1,6 @@
 package GDSCBackend5.HappyNewYear.server.service;
 
-import GDSCBackend5.HappyNewYear.server.domain.Member;
+import GDSCBackend5.HappyNewYear.server.domain.member.Member;
 import GDSCBackend5.HappyNewYear.server.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,6 +22,11 @@ public class MemberService {
         return member.getId();
     }
 
+    public Member findUser(String userId) {
+        List<Member> member = memberRepository.findByUserId(userId);
+        return member.get(0);
+    }
+
     private void validateDuplicateUserId(Member member) {
         List<Member> members = memberRepository.findByUserId(member.getUserId());
         if (!(members.isEmpty())) {
@@ -32,7 +37,6 @@ public class MemberService {
     public Member authentication(Member member, String password) {
         if (member.getPassword().equals(password)) {
             return member;
-        }
-        return null;
+        } else return null;
     }
 }
