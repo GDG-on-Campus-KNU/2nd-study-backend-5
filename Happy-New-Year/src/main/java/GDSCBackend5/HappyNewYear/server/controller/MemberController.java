@@ -26,18 +26,14 @@ public class MemberController {
     }
 
     @PostMapping("/signup")
-    public String save(@Validated @ModelAttribute MemberSignupRequest request, BindingResult bindingResult, Model model) {
+    public String save(@Validated @ModelAttribute MemberSignupRequest request, Model model) {
         model.addAttribute("message", "회원가입이 완료되었습니다.");
         model.addAttribute("searchUrl", "/");
 
-        if (bindingResult.hasErrors()) {
-            return "signup/signupForm";
-        }
-
         Member member = new Member();
         member.signup(request.getUserId(), request.getPassword(), request.getName());
-
         memberService.join(member);
+
         return "message";
     }
 }
