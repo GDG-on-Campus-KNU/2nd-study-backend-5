@@ -46,17 +46,17 @@ public class MemberController {
         return "signup/loginForm";
     }
     @PostMapping("/login")
-    public String login(@ModelAttribute MemberLoginRequest loginRequest, HttpServletRequest request
-    , HttpServletResponse response) {
+    public String login(@Validated @ModelAttribute MemberLoginRequest loginRequest,
+                        BindingResult bindingResult, HttpServletRequest request, Model model) {
 
         String userId = loginRequest.getUserId();
         Member findMember = memberService.findUser(userId);
         Member loginMember = memberService.authentication(findMember, loginRequest.getPassword());
 
         if (loginMember == null) {
-            return "/";
+            bindingResult.reject("loginFail", "아이디 비밀번호 불일치");
+            return "signup/loginForm";
         }
-
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
 

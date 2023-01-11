@@ -27,6 +27,11 @@ public class MemberService {
         return member.get(0);
     }
 
+    public Member findUserByToken(String token) {
+        List<Member> member = memberRepository.findByToken(token);
+        return member.get(0);
+    }
+
     private void validateDuplicateUserId(Member member) {
         List<Member> members = memberRepository.findByUserId(member.getUserId());
         if (!(members.isEmpty())) {

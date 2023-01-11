@@ -1,6 +1,6 @@
 package GDSCBackend5.HappyNewYear.server.controller;
 
-import GDSCBackend5.HappyNewYear.server.domain.Member;
+import GDSCBackend5.HappyNewYear.server.domain.member.Member;
 import GDSCBackend5.HappyNewYear.server.domain.Post;
 import GDSCBackend5.HappyNewYear.server.dto.member.MemberSignupRequest;
 import GDSCBackend5.HappyNewYear.server.service.MemberService;

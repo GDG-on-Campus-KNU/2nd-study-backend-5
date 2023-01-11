@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +11,10 @@
     <div id="contents">
         <img id="pocketimg" src="/image/Lovepik_com-401588692-lucky-bag.png">
         <br>
-        <a id="login" href="/member/login">로그인</a>
-        <a id="signup" href="/member/signup">회원가입</a>
+        <a id="login" th:unless=${loginMember} href="/member/login">로그인</a>
+        <a id="signup" th:unless=${loginMember} href="/member/signup">회원가입</a>
+        <span th:if=${loginMember} th:text="|${loginMember.name}님 환영합니다.|"></span>
+        <a th:if=${loginMember} th:href="@{/test/{token}(token = ${loginMember.token})}">토큰 넘어가는거 테스트용 내 글 보기</a>
     </div>
 </body>
 </html>
