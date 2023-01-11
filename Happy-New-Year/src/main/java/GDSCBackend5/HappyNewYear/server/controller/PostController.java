@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping("/post")
-
 public class PostController {
     @Autowired
     private PostService postService;
