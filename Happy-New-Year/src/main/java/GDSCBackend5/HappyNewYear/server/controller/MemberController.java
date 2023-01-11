@@ -26,7 +26,7 @@ public class MemberController {
     }
 
     @PostMapping("/signup")
-    public String save(@Validated @ModelAttribute MemberSignupRequest request, Model model) {
+    public String save(@ModelAttribute MemberSignupRequest request, Model model) {
         model.addAttribute("message", "회원가입이 완료되었습니다.");
         model.addAttribute("searchUrl", "/");
 
