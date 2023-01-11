@@ -1,8 +1,7 @@
 package GDSCBackend5.HappyNewYear.server.service;
 
-import GDSCBackend5.HappyNewYear.server.domain.Member;
+import GDSCBackend5.HappyNewYear.server.domain.member.Member;
 import GDSCBackend5.HappyNewYear.server.domain.Post;
-import GDSCBackend5.HappyNewYear.server.repository.PostRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

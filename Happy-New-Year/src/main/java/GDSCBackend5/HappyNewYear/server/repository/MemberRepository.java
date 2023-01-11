@@ -1,6 +1,6 @@
 package GDSCBackend5.HappyNewYear.server.repository;
 
-import GDSCBackend5.HappyNewYear.server.domain.Member;
+import GDSCBackend5.HappyNewYear.server.domain.member.Member;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

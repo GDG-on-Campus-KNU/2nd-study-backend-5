@@ -1,11 +1,14 @@
 package GDSCBackend5.HappyNewYear.server.controller;
 
-import GDSCBackend5.HappyNewYear.server.domain.Member;
-import GDSCBackend5.HappyNewYear.server.dto.ResponseDto;
+import GDSCBackend5.HappyNewYear.server.domain.member.Member;
+import GDSCBackend5.HappyNewYear.server.domain.member.SessionConst;
+import GDSCBackend5.HappyNewYear.server.dto.member.MemberLoginRequest;
 import GDSCBackend5.HappyNewYear.server.dto.member.MemberSignupRequest;
 import GDSCBackend5.HappyNewYear.server.service.MemberService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,5 +38,37 @@ public class MemberController {
         memberService.join(member);
 
         return "message";
+    }
+
+    @GetMapping("/login")
+    public String loginForm(Model model) {
+        model.addAttribute("member", new MemberLoginRequest());
+        return "signup/loginForm";
+    }
+    @PostMapping("/login")
+    public String login(@ModelAttribute MemberLoginRequest loginRequest, HttpServletRequest request
+    , HttpServletResponse response) {
+
+        String userId = loginRequest.getUserId();
+        Member findMember = memberService.findUser(userId);
+        Member loginMember = memberService.authentication(findMember, loginRequest.getPassword());
+
+        if (loginMember == null) {
+            return "/";
+        }
+
+        HttpSession session = request.getSession();
+        session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
+
+        return "redirect:/";
+    }
+
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        return "redirect:/";
     }
 }
