@@ -7,13 +7,14 @@ import GDSCBackend5.HappyNewYear.server.dto.member.MemberSignupRequest;
 import GDSCBackend5.HappyNewYear.server.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -50,7 +51,6 @@ public class MemberController {
                         BindingResult bindingResult, HttpServletRequest request, Model model) {
 
         Member loginMember = memberService.authentication(loginRequest.getUserId(), loginRequest.getPassword());
-
         if (loginMember == null) {
             model.addAttribute("member",loginRequest);
             return "signup/loginForm";
