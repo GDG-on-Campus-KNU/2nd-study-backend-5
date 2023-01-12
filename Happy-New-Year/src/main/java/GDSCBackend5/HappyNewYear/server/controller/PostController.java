@@ -25,8 +25,9 @@ public class PostController {
         return "writingHome";
     }
 
-    @PostMapping("/postwrite")
-    public String postWrite(Post post) {
+    @PostMapping("/writinghome")
+    public String postWrite(Post post, Model model) {
+        model.addAttribute("name", "kdozlo"+"님의 복주머니");
         post.posting(post.getSender(), post.getTitle(), post.getContent(), "u");
         postService.write(post);
 
