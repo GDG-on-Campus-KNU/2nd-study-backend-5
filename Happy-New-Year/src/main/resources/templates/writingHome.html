@@ -20,6 +20,7 @@
       <div class="popup">
         <div class="layout">
           <form action="/post/writinghome" method="post">
+            <input type="hidden" name="token" th:value="${token}">
             제목 : <input name="title" type="text"><br>
             작성자 : <input name="sender" type="text"><br>
             내용 : <textarea name="content"></textarea><br>

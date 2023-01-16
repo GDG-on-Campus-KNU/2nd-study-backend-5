@@ -17,7 +17,7 @@
         <form th:action="@{/member/logout}" method="post">
             <button type="submit" class="logout-btn" th:if="${loginMember}">로그아웃</button>
         </form>
-        <a th:if=${loginMember} th:href="@{/test/{token}(token = ${loginMember.token})}">토큰 넘어가는거 테스트용 내 글 보기</a>
+        <a th:if=${loginMember} th:href="@{/post/test/{token}(token = ${loginMember.token})}">토큰 넘어가는거 테스트용 내 글 보기</a>
     </div>
 </body>
 </html>

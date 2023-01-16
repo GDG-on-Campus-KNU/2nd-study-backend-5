@@ -1,5 +1,6 @@
 package GDSCBackend5.HappyNewYear.server.controller;
 
+import GDSCBackend5.HappyNewYear.server.domain.Post;
 import GDSCBackend5.HappyNewYear.server.domain.member.Member;
 import GDSCBackend5.HappyNewYear.server.domain.member.SessionConst;
 import GDSCBackend5.HappyNewYear.server.service.MemberService;
@@ -40,16 +41,6 @@ public class HomeController {
         return "/home";
     }
 
-    @GetMapping("/test/{token}")
-    public String test(@PathVariable("token") String token,HttpServletResponse response,@CookieValue(value = "token",required = false) String cookie, Model model) {
-        if (cookie == null||!cookie.equals(token)) {
-            model.addAttribute("name", "kdozlo"+"님의 복주머니");
-            return "writingHome";
-        }
-        else if (cookie.equals(token)) {
-            model.addAttribute("postList", postService.viewPostList(token));
-            return "/postview";
-        }
-        return "";
-    }
+
+
 }

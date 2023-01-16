@@ -27,12 +27,19 @@ public class MemberService {
         return member.get(0);
     }
 
+    public Member findUserByToken(String token) {
+        List<Member> member = memberRepository.findByUserToken(token);
+        return member.get(0);
+    }
+
     private void validateDuplicateUserId(Member member) {
         List<Member> members = memberRepository.findByUserId(member.getUserId());
         if (!(members.isEmpty())) {
             throw new IllegalStateException("동일한 아이디가 이미 존재합니다.");
         }
     }
+
+
 
     public Member authentication(String userId, String password) {
         List<Member> member = memberRepository.findByUserId(userId);
