@@ -43,7 +43,8 @@ public class HomeController {
     @GetMapping("/test/{token}")
     public String test(@PathVariable("token") String token,HttpServletResponse response,@CookieValue(value = "token",required = false) String cookie, Model model) {
         if (cookie == null||!cookie.equals(token)) {
-            return "/postwrite";
+            model.addAttribute("name", "kdozlo"+"님의 복주머니");
+            return "writingHome";
         }
         else if (cookie.equals(token)) {
             model.addAttribute("postList", postService.viewPostList(token));

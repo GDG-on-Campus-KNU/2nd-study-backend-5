@@ -19,11 +19,11 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @GetMapping("/writinghome")
+   /* @GetMapping("/writinghome")
     public String writingHome(Model model) {
         model.addAttribute("name", "kdozlo"+"님의 복주머니");
         return "writingHome";
-    }
+    }*/
 
     @PostMapping("/writinghome")
     public String postWrite(Post post, Model model) {
